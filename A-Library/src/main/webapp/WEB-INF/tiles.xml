@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="master" template="/WEB-INF/views/layout/master-layout.jsp">
+		<put-attribute name="sidebar" value="/WEB-INF/views/layout/sidebar.jsp"></put-attribute>
+		<put-attribute name="top-nav" value="/WEB-INF/views/layout/top-nav.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/layout/body.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp"></put-attribute>
+	</definition>
+	
+	
+	<definition name="index" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/index.jsp"></put-attribute>
+	</definition>
+	<definition name="return-list" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/return/return-list.jsp"></put-attribute>
+	</definition>
+	<definition name="menu-list" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/menu/menu-list.jsp"></put-attribute>
+	</definition>
+	<definition name="menu-permission" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/menu/menu-permission.jsp"></put-attribute>
+	</definition>
+	<definition name="user-list" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/user/user-list.jsp"></put-attribute>
+	</definition>
+	<definition name="user-action" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/user/user-action.jsp"></put-attribute>
+	</definition>
+	<definition name="goods-issue-list" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/goods-issue/goods-issue-list.jsp"></put-attribute>
+	</definition>
+	<definition name="goods-issue-action" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/goods-issue/goods-issue-action.jsp"></put-attribute>
+	</definition>
+	<definition name="goods-receipt-list" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/goods-receipt/goods-receipt-list.jsp"></put-attribute>
+	</definition>
+	<definition name="goods-receipt-action" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/goods-receipt/goods-receipt-action.jsp"></put-attribute>
+	</definition>
+	<definition name="issue-list" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/issue/issue-list.jsp"></put-attribute>
+	</definition>
+	<definition name="issue-action" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/issue/issue-action.jsp"></put-attribute>
+	</definition>
+	<definition name="history-list" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/history/history-list.jsp"></put-attribute>
+	</definition>
+	<definition name="history-action" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/history/history-action.jsp"></put-attribute>
+	</definition>
+	<definition name="readers-list" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/readers/readers-list.jsp"></put-attribute>
+	</definition>
+	<definition name="readers-action" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/readers/readers-action.jsp"></put-attribute>
+	</definition>
+	<definition name="libraryCard-list" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/library-card/libraryCard-list.jsp"></put-attribute>
+	</definition>
+	<definition name="libraryCard-action" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/library-card/libraryCard-action.jsp"></put-attribute>
+	</definition>	
+	<definition name="productInfo-list" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/product/product-list.jsp"></put-attribute>
+	</definition>
+	<definition name="productInfo-action" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/product/product-action.jsp"></put-attribute>
+	</definition>	
+	<definition name="publisher-list" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/publisher/publisher-list.jsp"></put-attribute>
+	</definition>
+	<definition name="publisher-action" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/publisher/publisher-action.jsp"></put-attribute>
+	</definition>
+	<definition name="author-list" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/author/author-list.jsp"></put-attribute>
+	</definition>
+	<definition name="author-action" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/author/author-action.jsp"></put-attribute>
+	</definition>
+	<definition name="category-list" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/category/category-list.jsp"></put-attribute>
+	</definition>
+	<definition name="category-action" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/category/category-action.jsp"></put-attribute>
+	</definition>
+	<definition name="check-out" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/call-card/checkout.jsp"></put-attribute>
+	</definition>
+	<definition name="call-card" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/call-card/callcard.jsp"></put-attribute>
+	</definition>
+	<definition name="login" template="/WEB-INF/views/login/login.jsp"></definition>
+	<definition name="access-denied" template="/WEB-INF/views/access-denied/access-denied.jsp"></definition>
+</tiles-definitions>
