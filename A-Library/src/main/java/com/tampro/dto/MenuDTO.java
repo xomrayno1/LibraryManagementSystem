@@ -23,7 +23,6 @@ public class MenuDTO  implements Serializable{
 	private Map<Integer,Integer> mapAuth;
 	//private Set<AuthDTO> auths;
 	
-	
 	public int getId() {
 		return id;
 	}
@@ -90,8 +89,6 @@ public class MenuDTO  implements Serializable{
 	public void setMapAuth(Map<Integer, Integer> mapAuth) {
 		this.mapAuth = mapAuth;
 	}
-	
-	
 	
 	
 	

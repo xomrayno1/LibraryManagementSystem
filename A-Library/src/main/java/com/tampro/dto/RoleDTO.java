@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 public class RoleDTO {
-	private int id;
+	private Integer id;
 	private Set<AuthDTO> auths;
 	//private Set<UserRolesDTO> userRolesDTO;
 	private int activeFlag;
@@ -12,8 +12,15 @@ public class RoleDTO {
 	private Date updateDate;
 	private String name;
 	private String description;
+	private int idRole;
 	
 	
+	public int getIdRole() {
+		return idRole;
+	}
+	public void setIdRole(int idRole) {
+		this.idRole = idRole;
+	}
 	public RoleDTO(int id) {
 		super();
 		this.id = id;
@@ -21,10 +28,10 @@ public class RoleDTO {
 	public RoleDTO() {
 		super();
 	}
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public Set<AuthDTO> getAuths() {

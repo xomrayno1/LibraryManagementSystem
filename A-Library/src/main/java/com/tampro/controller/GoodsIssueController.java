@@ -96,9 +96,7 @@ public class GoodsIssueController {
 	@GetMapping("/goods-issue/view/{id}")
 	public String invoiceView(Model model,@PathVariable("id") int id) {
 		InvoiceDTO invoiceDTO =  goodsIssueService.findById(id);
-		List<ProductInfoDTO> list = productService.findAll(null, null);
-		sortProductInfo(list);
-		model.addAttribute("listProduct",list);
+		System.out.println("Name : "+invoiceDTO.getProductInfoDTO().getName());
 		model.addAttribute("submitForm",invoiceDTO);
 		model.addAttribute("title","View");
 		model.addAttribute("viewOnly",true);

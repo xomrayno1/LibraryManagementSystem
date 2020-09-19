@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.commons.collections4.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.tampro.dao.MenuDAO;
 import com.tampro.dto.MenuDTO;
@@ -39,12 +40,18 @@ public class MenuServiceImpl  implements MenuService{
 		return menuDTOs;
 	}
 
-	public List<MenuDTO> findAll(MenuDTO menuDTO, Paging paging) {
+	public List<MenuDTO> findAlls2(MenuDTO menuDTO, Paging paging) {
 		// TODO Auto-generated method stub
 		StringBuilder queryStr = new StringBuilder();
 		Map<String, Object> mapParams = new HashedMap<String, Object>();
+		if(menuDTO != null) {
+			if(!StringUtils.isEmpty(menuDTO.getUrl()) && menuDTO.getUrl() != null) {
+				queryStr.append(" and model.url like :url ");
+				mapParams.put("url","%"+menuDTO.getUrl()+"%");
+			}
+		}
 		List<MenuDTO> menuDTOs = new ArrayList<MenuDTO>();
-		for(Menu menu : menuDAO.findAll(queryStr.toString(), mapParams, paging)) {
+		for(Menu menu : menuDAO.findAlls2(queryStr.toString(), mapParams, paging)) {
 			MenuDTO dto = ConvertToDTO.convertMenuEntityToDTO(menu);
 			menuDTOs.add(dto);
 		}		
@@ -63,6 +70,38 @@ public class MenuServiceImpl  implements MenuService{
 		menu.setUpdateDate(new Date());
 		menu.setUrl(menuDTO.getUrl());
 		menuDAO.update(menu);
+	}
+
+	@Override
+	public void changeStatus(int id) {
+		// TODO Auto-generated method stub
+		MenuDTO menuDTO = findById(id);
+		menuDTO.setActiveFlag(menuDTO.getActiveFlag() == 1 ? 0 : 1);
+		try {
+			update(menuDTO);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public List<MenuDTO> findAll(MenuDTO menuDTO, Paging paging) {
+		// TODO Auto-generated method stub
+		StringBuilder queryStr = new StringBuilder();
+		Map<String, Object> mapParams = new HashedMap<String, Object>();
+		if(menuDTO != null) {
+			if(!StringUtils.isEmpty(menuDTO.getUrl()) && menuDTO.getUrl() != null) {
+				queryStr.append(" and model.url =:url ");
+				mapParams.put("url","%"+menuDTO.getUrl()+"%");
+			}
+		}
+		List<MenuDTO> menuDTOs = new ArrayList<MenuDTO>();
+		for(Menu menu : menuDAO.findAll(queryStr.toString(), mapParams, paging)) {
+			MenuDTO dto = ConvertToDTO.convertMenuEntityToDTO(menu);
+			menuDTOs.add(dto);
+		}		
+		return menuDTOs;
 	}
 
 }

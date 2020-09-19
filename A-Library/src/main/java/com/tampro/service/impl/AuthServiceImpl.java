@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.tampro.dao.AuthDAO;
 import com.tampro.dto.AuthDTO;
+import com.tampro.dto.AuthForm;
 import com.tampro.dto.Paging;
 import com.tampro.entity.Auth;
 import com.tampro.entity.Menu;
@@ -46,18 +47,29 @@ public class AuthServiceImpl  implements AuthService{
 	}
 
 	@Override
-	public void update(AuthDTO authDTO) throws Exception {
+	public void update(AuthForm authForm) throws Exception {
 		// TODO Auto-generated method stub
-		Auth auth = new Auth();
-		auth.setActiveFlag(authDTO.getActiveFlag());
-		auth.setCreateDate(authDTO.getCreateDate());
-		auth.setId(authDTO.getId());
-		auth.setMenu(new Menu(authDTO.getMenuDTO().getId()));
-		auth.setPermission(authDTO.getPermission());
-		auth.setRole(new Role(authDTO.getIdRole()));
-		auth.setUpdateDate(new Date());
-		authDAO.update(auth);
+		int roleId = authForm.getIdRole();
+		int menuId = authForm.getIdMenu();
+		Auth auth = authDAO.find(roleId, menuId);
+		if(auth != null) {
+			auth.setPermission(authForm.getPermission());
+			auth.setUpdateDate(new Date());
+			authDAO.update(auth);
+		}else {
+			if(authForm.getPermission() == 1) {
+				auth = new Auth();
+				auth.setActiveFlag(1);
+				auth.setCreateDate(new Date());
+				auth.setMenu(new Menu(authForm.getIdMenu()));
+				auth.setRole(new Role(authForm.getIdRole()));
+				auth.setUpdateDate(new Date());
+				auth.setPermission(authForm.getPermission());
+				authDAO.save(auth);
+			}
+		}
 	}
+
 	
 
 }

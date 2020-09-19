@@ -8,6 +8,7 @@
 			<div class="title_left">
 				<h4>Thẻ thư viện</h4>
 			</div>
+			<div class="clearfix"></div>
 		</div>
 				<div class="clearfix"></div>
 			<div class="clearfix"></div>

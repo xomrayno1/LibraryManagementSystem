@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.tampro.dao.CallCardDAO;
 import com.tampro.dto.CallCardDTO;
@@ -98,6 +99,16 @@ public class CallCardServiceImpl  implements CallCardService{
 		// TODO Auto-generated method stub
 		StringBuilder queryStr = new StringBuilder();
 		Map<String,Object> mapParams = new HashedMap();
+		if(callCardDTO != null) {
+			if(callCardDTO.getLibaryCardDTO() != null) {
+				if(callCardDTO.getLibaryCardDTO().getReadersDTO() != null) {
+					if(!StringUtils.isEmpty(callCardDTO.getLibaryCardDTO().getReadersDTO().getMssv()) &&callCardDTO.getLibaryCardDTO().getReadersDTO().getMssv() != null ) {
+						queryStr.append(" and model.libaryCard.readers.mssv =:mssv ");
+						mapParams.put("mssv", callCardDTO.getLibaryCardDTO().getReadersDTO().getMssv());
+					}
+				}
+			}
+		}
 		List<CallCardDTO> list = new ArrayList<CallCardDTO>();
 		for(CallCard callCard : callCardDAO.findAllUnfinish(queryStr.toString(), mapParams, paging)) {
 			CallCardDTO dto = ConvertToDTO.convertCallCardEntityToDTO(callCard);

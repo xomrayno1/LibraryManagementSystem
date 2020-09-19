@@ -43,6 +43,12 @@ public class RoleServiceImpl  implements RoleService{
 		// TODO Auto-generated method stub
 		StringBuilder queryStr = new StringBuilder();
 		Map<String, Object> mapParams = new HashedMap<String, Object>();
+		if(roleDTO != null) {
+			if(roleDTO.getIdRole()  != 0) {
+				queryStr.append(" and model.id =:id ");
+				mapParams.put("id", roleDTO.getIdRole());
+			}
+		}
 		List<RoleDTO> roleDTOs = new ArrayList<RoleDTO>();
 		for(Role role : roleDAO.findAll(queryStr.toString(), mapParams, paging)) {
 			RoleDTO dto = ConvertToDTO.convertRoleEntityToDTO(role);

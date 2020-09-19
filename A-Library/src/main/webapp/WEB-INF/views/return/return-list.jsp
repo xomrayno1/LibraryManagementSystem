@@ -4,6 +4,12 @@
 
 <div class="right_col" role="main">
 	<div class="">
+			<div class="page-title">
+				<div class="title_left">
+					<h4>Danh sách trả</h4>
+				</div>
+				<div class="clearfix"></div>
+			</div>
 				<div class="clearfix"></div>
 			<div class="clearfix"></div>
 					<div class="row">
@@ -11,20 +17,27 @@
 							<div class="x_panel">
 								<div class="x_content">
 									<br />
-									<c:url value="/return/list/1" var="searchUrl"></c:url>
+									<c:url value="/return/list/1" var="searchUrl"/>
 									<form:form servletRelativeAction="${searchUrl}" method="POST" modelAttribute="searchForm" cssClass="form-horizontal form-label-left">
-										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for=status>Ngày Trả <span class="required">*</span>
-											</label>
-											<div class="col-md-6 col-sm-6 ">
-												<form:input path="returnDate" cssClass="form-control"/>
-											</div>
-										</div>
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for=mssv>Mã số sinh viên<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
 												<form:input path="libraryCardDTO.readersDTO.mssv" cssClass="form-control"/>
+											</div>
+										</div>
+										<div class="item form-group">
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for=fromDate>Từ <span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 ">
+												<form:input type="date" path="fromDate" cssClass="form-control"/>
+											</div>
+										</div>
+										<div class="item form-group">
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for=toDate>Đến <span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 ">
+												<form:input type="date"  path="toDate" cssClass="form-control"/>
 											</div>
 										</div>
 
@@ -69,30 +82,7 @@
                         </tbody>
                       </table>
 	<jsp:include page="/WEB-INF/views/layout/paging.jsp"></jsp:include>
-
-
       </div>
-		<div id="deleteModal" class="modal fade">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<p class="modal-title">Xóa</p>
-						<button class="close" data-dismiss="modal" >&times;</button>
-					</div>
-					<div class="modal-body">
-						Bạn có chắc chắn muốn xóa không !
-					</div>
-					<c:url value="/issue/delete" var="urlDelete" />
-					<form action="${urlDelete}" method="post">
-						<input type="hidden" id="idModalDelete" name="id">
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-default" >Có</button>
-							<button  class="btn btn-default" data-dismiss="modal">Close</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
 

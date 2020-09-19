@@ -84,8 +84,8 @@ public class Menu {
 	}
 	public void setAuths(Set<Auth> auths) {
 		this.auths = auths;
-	} 
-	
+	}
+
 	
 	
 	

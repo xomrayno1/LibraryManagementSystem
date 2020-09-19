@@ -5,7 +5,7 @@
 <div class="right_col" role="main">
 	<div class="">
 		<div class="x_title">
-			<h2>Menu List</h2>
+			<h2>Menu</h2>
 
 			<div class="clearfix"></div>
 		</div>
@@ -19,10 +19,10 @@
 									<c:url value="/menu/list/1" var="searchUrl"></c:url>
 									<form:form servletRelativeAction="${searchUrl}" method="POST" modelAttribute="searchForm" cssClass="form-horizontal form-label-left">
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Tên <span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="url">Tên Url<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<form:input path="name" cssClass="form-control"/>
+												<form:input path="url" cssClass="form-control"/>
 											</div>
 										</div>									
 										<div class="ln_solid"></div>
@@ -40,7 +40,7 @@
 					</div>
 		
 	<div class="table-responsive">
-		<a href='<c:url value="/menu/permission"></c:url>'><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>Thêm</button></a>
+		<a href='<c:url value="/menu/permission"></c:url>'><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Permission</button></a>
                       <table class="table table-striped jambo_table bulk_action">
                         <thead>
                           <tr class="headings">
@@ -59,23 +59,25 @@
                         <tbody>
                           <c:forEach items="${listProduct}" var="menu" varStatus="i"> 
                           	<tr>
+                          	
                             <td>${pageInfo.offSet + i.index + 1} </td>
-                            <td>${menu.url}</td>
-                            <c:choose>
+                            <td>${menu.url} <input type="hidden" id="idStatus" value="${menu.id}"></td>
+                            <c:choose>								                        	
                             	<c:when test="${menu.activeFlag == 1 }">
-                            		<td><button class="btn btn-round btn-danger">Disable</button></td>
+                            		<td><button data-target="#statusModal" data-toggle="modal" class="btn btn-round btn-danger btn-status">Disable</button></td>
                             	</c:when>
                             	<c:otherwise>
-                            		<td><button class="btn btn-round btn-primary">Enable</button></td>
+                            		<td><button data-target="#statusModal" data-toggle="modal" class="btn btn-round btn-primary btn-status">Enable</button></td>
                             	</c:otherwise>
+                            	
                             </c:choose>             
                             <c:forEach items="${menu.mapAuth}" var="auth">
                             	<c:choose>
                             		<c:when test="${auth.value == 1}">
-                            			<td class="text-center"><i class="fa fa-times" style="color:red;"></i></td>
+                            			<td class="text-center"><i class="fa fa-check" style="color: green"></i></td>
                             		</c:when>
                             		<c:otherwise>
-                            			<td class="text-center"><i class="fa fa-check" style="color: green"></i></td>
+                            			<td class="text-center"><i class="fa fa-times" style="color:red;"></i></td>
                             		</c:otherwise>
                             	</c:choose>
                             </c:forEach>	
@@ -89,7 +91,7 @@
 
 
       </div>
-		<div id="deleteModal" class="modal fade">
+		<div id="statusModal" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -97,11 +99,11 @@
 						<button class="close" data-dismiss="modal" >&times;</button>
 					</div>
 					<div class="modal-body">
-						Bạn có chắc chắn muốn xóa không !
+						Bạn có chắc chắn muốn tắt không !
 					</div>
-					<c:url value="/menu/delete" var="urlDelete" />
+					<c:url value="/menu/change-status" var="urlDelete" />
 					<form action="${urlDelete}" method="post">
-						<input type="hidden" id="idModalDelete" name="id">
+						<input type="hidden" id="idModalStatus" name="id">
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-default" >Có</button>
 							<button  class="btn btn-default" data-dismiss="modal">Close</button>
@@ -147,11 +149,12 @@
 		$('#menulistId').parents().show();
 	});
 	
-	var btnDelete = document.getElementsByClassName('btn-delete');
-	for(var i = 0 ; i < btnDelete.length ;i++){
-		btnDelete[i].addEventListener('click',function(){
-			var idProduct =	$(this).parent().find("#idProduct").val();
-			$("#idModalDelete").val(idProduct);
+	var btnStatus = document.getElementsByClassName('btn-status');
+	for(var i = 0 ; i < btnStatus.length ;i++){
+		btnStatus[i].addEventListener('click',function(){
+			var idStatus =$(this).parents("tr").find("#idStatus").val();
+			console.log(idStatus);
+			$("#idModalStatus").val(idStatus);
 		});
 	}
 	

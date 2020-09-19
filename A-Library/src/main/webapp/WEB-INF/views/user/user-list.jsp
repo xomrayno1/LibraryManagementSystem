@@ -4,6 +4,12 @@
 
 <div class="right_col" role="main">
 	<div class="">
+			<div class="page-title">
+				<div class="title_left">
+					<h4>Tài khoản</h4>
+				</div>
+				<div class="clearfix"></div>
+			</div>
 				<div class="clearfix"></div>
 			<div class="clearfix"></div>
 					<div class="row">

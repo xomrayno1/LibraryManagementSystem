@@ -15,6 +15,12 @@
 	<definition name="return-list" extends="master">
 		<put-attribute name="body" value="/WEB-INF/views/return/return-list.jsp"></put-attribute>
 	</definition>
+	<definition name="role-list" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/role/role-list.jsp"></put-attribute>
+	</definition>
+	<definition name="role-action" extends="master">
+		<put-attribute name="body" value="/WEB-INF/views/role/role-action.jsp"></put-attribute>
+	</definition>
 	<definition name="menu-list" extends="master">
 		<put-attribute name="body" value="/WEB-INF/views/menu/menu-list.jsp"></put-attribute>
 	</definition>

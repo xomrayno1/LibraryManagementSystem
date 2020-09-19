@@ -4,6 +4,11 @@
 
 <div class="right_col" role="main">
 	<div class="">
+			<div class="x_title">
+				<h2>Sách</h2>
+	
+				<div class="clearfix"></div>
+			</div>
 				<div class="clearfix"></div>
 			<div class="clearfix"></div>
 					<div class="row">

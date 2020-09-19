@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.tampro.dao.CallCardDetailDAO;
 import com.tampro.dto.CallCardDetailDTO;
@@ -141,6 +142,23 @@ public class CallCardDetailServiceImpl implements CallCardDetailService{
 		// TODO Auto-generated method stub
 		StringBuilder queryStr = new StringBuilder();
 		Map<String,Object> mapParams = new HashMap<String,Object>();
+		if(callCardDetailDTO != null) {
+			if(callCardDetailDTO.getFromDate() != null &&  callCardDetailDTO.getToDate() != null) {
+				queryStr.append(" and  model.createDate  between  :fromDate and :toDate ");
+				mapParams.put("fromDate", callCardDetailDTO.getFromDate());
+				mapParams.put("toDate", callCardDetailDTO.getToDate());
+			}
+			if(callCardDetailDTO.getLibraryCardDTO() != null) {
+				if(callCardDetailDTO.getLibraryCardDTO().getReadersDTO() != null) {
+					if(!StringUtils.isEmpty(callCardDetailDTO.getLibraryCardDTO().getReadersDTO().getMssv()) && callCardDetailDTO.getLibraryCardDTO().getReadersDTO().getMssv() != null ) {
+						queryStr.append(" and  callCard.libaryCard.readers.mssv =:mssv ");
+						mapParams.put("mssv", callCardDetailDTO.getLibraryCardDTO().getReadersDTO().getMssv());
+					}
+				}
+			}
+			
+		
+		}
 		queryStr.append(" order by model.id desc ");
 		List<CallCardDetailDTO> list = new ArrayList<CallCardDetailDTO>();
 		for(CallCardDetail callCardDetail : cardDetailDAO.findAllFinish(queryStr.toString(), mapParams, paging)) {

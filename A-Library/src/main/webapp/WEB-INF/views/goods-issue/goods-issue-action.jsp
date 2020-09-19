@@ -24,11 +24,19 @@
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Tên sản phẩm <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">												
-													<form:select path="idProduct" cssClass="form-control">
-														<c:forEach items="${listProduct}" var="item">
-															<form:option value="${item.id}">${item.name}</form:option>
-														</c:forEach>
-													</form:select>																								<div>
+													<c:choose>
+														<c:when test="${!viewOnly}">
+															<form:select path="idProduct" cssClass="form-control">
+																<c:forEach items="${listProduct}" var="item">
+																	<form:option value="${item.id}">${item.name}</form:option>
+																</c:forEach>
+															</form:select>
+														</c:when>
+														<c:otherwise>
+															<form:input path="productInfoDTO.name" cssClass="form-control" readonly="${viewOnly}"/>				
+														</c:otherwise>
+													</c:choose>	
+												<div>
 													<div class="has-error">
 														<form:errors  path="idProduct" cssClass="help-block"/>
 													</div>
