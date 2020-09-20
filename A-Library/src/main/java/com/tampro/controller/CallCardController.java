@@ -91,7 +91,10 @@ public class CallCardController {
 	public String addCallCard(Model model, @PathVariable("id") int id,HttpSession session ) throws ParseException {
 		UsersDTO usersDTO = (UsersDTO) session.getAttribute(Constant.USER_INFO);
 		LibraryCardDTO libaryCardDTO = libraryCardService.findById(id);
-		if(!check(libaryCardDTO)) {// check xem thẻ thư viện đã có đang mượn chưa , nếu đang mượn thì ko cho mượn tiếp
+		if(!libaryCardDTO.getEndDay().after(new Date())) { // Check thẻ còn hạn hay không 
+			session.setAttribute(Constant.MSG_ERROR, "Thẻ của hết hạn");
+			return "redirect:/library-card/list/1";
+		}else if(!check(libaryCardDTO)) {// check xem thẻ thư viện đã có đang mượn chưa , nếu đang mượn thì ko cho mượn tiếp
 			session.setAttribute(Constant.MSG_ERROR, "Bạn có 1 phiếu mượn chưa hoàn thành");
 			return "redirect:/library-card/list/1";
 		}else {
@@ -109,7 +112,7 @@ public class CallCardController {
 			callCardDTO.setStatus(Constant.UNFINISH);
 			callCardDTO.setUsersDTO(usersDTO);
 			session.setAttribute(Constant.CALL_CARD,callCardDTO);
-		}		
+		}	
 		return "redirect:/call-card/add/1";
 	}
 	public boolean check(LibraryCardDTO libaryCardDTO) {

@@ -45,6 +45,8 @@
 					</div>
 		
 	<div class="table-responsive">
+	<a href='<c:url value="/return/report"></c:url>'><button class="btn btn-success"><i class="glyphicon glyphicon-cloud-download"></i> Xuất báo cáo</button></a> 
+		<!-- Cuối ngày xuất báo những đơn nhập kho trong ngày hôm đó trong  ngày hôm đó -->
                       <table class="table table-striped jambo_table bulk_action">
                         <thead>
                           <tr class="headings">

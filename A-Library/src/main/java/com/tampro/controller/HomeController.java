@@ -24,6 +24,7 @@ import com.tampro.dto.MenuDTO;
 import com.tampro.dto.RoleDTO;
 import com.tampro.dto.UserRolesDTO;
 import com.tampro.dto.UsersDTO;
+import com.tampro.service.MenuService;
 import com.tampro.service.UserService;
 import com.tampro.utils.Constant;
 import com.tampro.validator.LoginValidator;
@@ -34,6 +35,9 @@ public class HomeController {
 	LoginValidator loginValidator;
 	@Autowired
 	UserService  userService;
+	@Autowired
+	MenuService menuService;
+	
 	@InitBinder
 	public void initParam(WebDataBinder dataBinder) {
 		if(dataBinder.getTarget() == null) {

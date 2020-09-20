@@ -74,7 +74,7 @@ public class MenuController {
  		return "menu-list";
 	}
 
-	@RequestMapping("/menu/permission")
+	@RequestMapping("/menu/permission") 
 	public String permission(Model model ) {
 		model.addAttribute("submitForm", new AuthForm());
 		innitSelect(model);
@@ -92,7 +92,10 @@ public class MenuController {
 		}
 		return "redirect:/menu/list/1";
 	}
-	@PostMapping("/menu/change-status")
+	// thay đổi activeFlag , trong permission sẽ phân quyền các menu
+	// Mục đích : thay đổi activeFlag .Có một số chức năng  sẽ ko cho phân quyền.
+	// khi status ở Disable thì chức năng này sẽ ko có trong phân quyền. Permission
+	@PostMapping("/menu/change-status") 
 	public String permission(Model model,@RequestParam("id")int id,HttpSession session) {	
 		try {		
 			menuService.changeStatus(id);

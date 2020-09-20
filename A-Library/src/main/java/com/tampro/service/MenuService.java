@@ -12,4 +12,5 @@ public interface MenuService {
 	void update(MenuDTO menuDTO) throws Exception;
 	List<MenuDTO> findAlls2(MenuDTO menuDTO,Paging paging);
 	void changeStatus(int id);
+
 }

@@ -9,5 +9,4 @@ import com.tampro.entity.Menu;
 public interface MenuDAO<E>  extends BaseDAO<E>{
 	
 	List<Menu> findAlls2(String queryStr,Map<String,Object> mapParams, Paging paging );
-
 }

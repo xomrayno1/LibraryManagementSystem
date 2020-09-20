@@ -42,6 +42,8 @@
 		
 	<div class="table-responsive">
 		<a href='<c:url value="/call-card/add"></c:url>'><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>Thêm</button></a>
+		<a href='<c:url value="/issue/report"></c:url>'><button class="btn btn-success"><i class="glyphicon glyphicon-cloud-download"></i> Xuất báo cáo</button></a> 
+		<!-- Cuối ngày xuất báo những sách còn đang cho mượn -->
                       <table class="table table-striped jambo_table bulk_action">
                         <thead>
                           <tr class="headings">
@@ -69,7 +71,7 @@
                        			<c:otherwise>
                        				<td>Đã hoàn thành</td>
                        			</c:otherwise>
-                        	</c:choose>                                     	
+                        	</c:choose>                                  	
                             <td  class="last text-center">
 	                            <a href='<c:url value="/issue/edit/${issue.id}"></c:url>' class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i></a>                             
                             </td>                  

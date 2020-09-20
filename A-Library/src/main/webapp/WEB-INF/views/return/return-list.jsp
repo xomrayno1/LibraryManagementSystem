@@ -55,12 +55,15 @@
 						</div>
 					</div>
 	<div class="table-responsive">
+		<a href='<c:url value="/call-card/add"></c:url>'><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>Thêm</button></a>
+		<a href='<c:url value="/return/report"></c:url>'><button class="btn btn-success"><i class="glyphicon glyphicon-cloud-download"></i> Xuất báo cáo</button></a> 
+		<!-- Cuối ngày xuất báo những sách được trả trong  ngày hôm đó -->
                       <table class="table table-striped jambo_table bulk_action">
                         <thead>
                           <tr class="headings">
                             <th class="column-title">#</th>
                             <th class="column-title">Id</th>
-                             <th class="column-title">Mã sinh viên</th>
+                            <th class="column-title">Mã sinh viên</th>
                             <th class="column-title">Tên sách</th>
                             <th class="column-title">Ngày quy định</th>
                             <th class="column-title">Ngày Trả</th>
